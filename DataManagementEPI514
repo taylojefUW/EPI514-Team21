@@ -74,11 +74,14 @@ total4$DISPCODE[total4$DISPCODE == 1200] <- NA
 total4$SEX1[total4$SEX1 == 1] <- NA
 total4$SEX1[total4$SEX1 == 9] <- NA
 
-total4$HLTHPLN1[total4$HLTHPLN1 == 7:9] <- NA
+total4$HLTHPLN1[total4$HLTHPLN1 == 7] <- NA
+total4$HLTHPLN1[total4$HLTHPLN1 == 9] <- NA 
 
-total4$PERSDOC2[total4$PERSDOC2 == 7:9] <- NA
+total4$PERSDOC2[total4$PERSDOC2 == 7] <- NA
+total4$PERSDOC2[total4$PERSDOC2 == 9] <- NA
 
-total4$MEDCOST[total4$MEDCOST == 7:9] <- NA
+total4$MEDCOST[total4$MEDCOST == 7] <- NA
+total4$MEDCOST[total4$MEDCOST == 9] <- NA
 
 total4$CHECKUP1[total4$CHECKUP1 == 7] <- NA
 total4$CHECKUP1[total4$CHECKUP1 == 9] <- NA
