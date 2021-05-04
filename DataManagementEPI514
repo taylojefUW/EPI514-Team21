@@ -66,7 +66,7 @@ colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "SEX")] <- "SEX1"
 
 
 #Cleaning up variables 
-total4$X_AGE5YR[total4$X_AGE5YR > 4] <- NA
+total4$X_AGEG5YR[total4$X_AGEG5YR > 4] <- NA
 
 total4$DISPCODE[total4$DISPCODE == 1200] <- NA
 
