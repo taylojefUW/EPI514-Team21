@@ -1,4 +1,0 @@
-colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
-colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
-colnames(brfss2016_c)[which(names(brfss2016_c) == "_IMPRACE")] <- "_RACE"
-colnames(brfss2015_c)[which(names(brfss2015_c) == "_IMPRACE")] <- "_RACE"
