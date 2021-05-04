@@ -30,5 +30,14 @@ brfss2016_c <- brfss2016[, c("_STATE", "IYEAR", "DISPCODE", "_PSU", "_STSTR", "_
 brfss2015_c <- brfss2015[, c("_STATE", "IYEAR", "DISPCODE", "_PSU", "_STSTR", "_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "_RACE", "HPVADVC2", "HPVADSHT")]
 
 colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
-colnames(brfss2016_c)[which(names(brfss2016_c) == "_IMPRACE")] <- "_RACE"
-colnames(brfss2015_c)[which(names(brfss2015_c) == "_IMPRACE")] <- "_RACE"
+colnames(brfss2019_c)[which(names(brfss2019_c) == "SEXVAR")] <- "SEX1"
+colnames(brfss2017_c)[which(names(brfss2017_c) == "SEX")] <- "SEX1"
+colnames(brfss2016_c)[which(names(brfss2016_c) == "SEX")] <- "SEX1"
+colnames(brfss2016_c)[which(names(brfss2016_c) == "_RACE")] <- "_IMPRACE"
+colnames(brfss2015_c)[which(names(brfss2015_c) == "_RACE")] <- "_IMPRACE"
+colnames(brfss2015_c)[which(names(brfss2015_c) == "SEX")] <- "SEX1"
+
+total <- rbind(brfss2019_c, brfss2018_c)
+total2 <- rbind(total, brfss2017_c)
+total3 <- rbind(total2, brfss2016_c)
+total4 <- rbind(total3, brfss2015_c)
