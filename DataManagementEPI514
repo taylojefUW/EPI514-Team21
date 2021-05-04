@@ -16,10 +16,19 @@ brfss16V2 <- read.xport("LLCP16V2.XPT")
 brfss15V2 <- read.xport("LLCP15V2.XPT")
 
 brfss2019_c <- brfss2019[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC3", "HPVADSHT")]
+brfss2019_c <- brfss2019_c[brfss2019_c$X_STATE==c(13,17,28,46,47,48), ]
+
 brfss2018_c <- brfss2018[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC2", "HPVADSHT")]
+brfss2018_c <- brfss2018_c[brfss2018_c$X_STATE==c(1,9,15,28,29,34,47,48), ]
+
 brfss2017_c <- brfss2017[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC2", "HPVADSHT")]
+brfss2017_c <- brfss2017_c[brfss2017_c$X_STATE==c(5,13,28,33,45,47,48), ]
+
 brfss2016_c <- brfss2016[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
+brfss2016_c <- brfss2016_c[brfss2016_c$X_STATE==c(1,9,15,29,31,37,45,46,48), ]
+
 brfss2015_c <- brfss2015[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
+brfss2015_c <- brfss2015_c[brfss2015_c$X_STATE==c(13, 25, 28, 45, 54), ]
 
 colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
 colnames(brfss2019_c)[which(names(brfss2019_c) == "SEXVAR")] <- "SEX1"
@@ -53,6 +62,10 @@ colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "X_RACE")] <- "X_IMPRACE"
 colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "SEX")] <- "SEX1"
 
 
+
+
+
+#Cleaning up variables 
 total4$X_AGE5YR[total4$X_AGE5YR > 4] <- NA
 
 total4$DISPCODE[total4$DISPCODE == 1200] <- NA
