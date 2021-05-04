@@ -72,6 +72,7 @@ total4$X_AGEG5YR[total4$X_AGEG5YR > 4] <- NA
 total4$DISPCODE[total4$DISPCODE == 1200] <- NA
 
 total4$SEX1[total4$SEX1 == 1] <- NA
+total4$SEX1[total4$SEX1 == 7] <- NA
 total4$SEX1[total4$SEX1 == 9] <- NA
 
 total4$HLTHPLN1[total4$HLTHPLN1 == 7] <- NA
