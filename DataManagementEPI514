@@ -51,5 +51,30 @@ colnames(brfss2015v1_c)[which(names(brfss2015v1_c) == "X_RACE")] <- "X_IMPRACE"
 colnames(brfss2015v1_c)[which(names(brfss2015v1_c) == "SEX")] <- "SEX1"
 colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "X_RACE")] <- "X_IMPRACE"
 colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "SEX")] <- "SEX1"
-"
 
+
+total4$X_AGE5YR[total4$X_AGE5YR > 4] <- NA
+
+total4$DISPCODE[total4$DISPCODE == 1200] <- NA
+
+total4$SEX1[total4$SEX1 == 1] <- NA
+total4$SEX1[total4$SEX1 == 9] <- NA
+
+total4$HLTHPLN1[total4$HLTHPLN1 == 7:9] <- NA
+
+total4$PERSDOC2[total4$PERSDOC2 == 7:9] <- NA
+
+total4$MEDCOST[total4$MEDCOST == 7:9] <- NA
+
+total4$CHECKUP1[total4$CHECKUP1 == 7] <- NA
+total4$CHECKUP1[total4$CHECKUP1 == 9] <- NA
+
+total4$EMPLOY1[total4$EMPLOY1 == 9] <- NA
+
+total4$INCOME2[total4$INCOME2 == 77] <- NA
+total4$INCOME2[total4$INCOME2 == 99] <- NA
+
+total4$HPVADVC2[total4$HPVADVC2 == 7:9] <- NA
+
+total4$HPVADSHT[total4$HPVADSHT == 77] <- NA
+total4$HPVADSHT[total4$HPVADSHT == 99] <- NA
