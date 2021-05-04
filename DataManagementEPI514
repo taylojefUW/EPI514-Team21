@@ -106,3 +106,10 @@ total4$HPVVAC[total4$HPVADVC2 >= 2] <- 2
 total4$HPVVAC <-factor(total4$HPVVAC, levels=1:2, labels=c("Yes","No"))
   
 table(total4$HPVVAC)
+
+#Factoring/Labeling variables 
+
+total4$INCOME2 <-factor(total4$INCOME2, levels=1:8, labels=c("<$10,000","$10,000-$14,999",
+                                                             "$15,000-$19,999","$20,000-$24,999",
+                                                             "$25,000-$34,999","$35,000-$49,999","$50,000-$74,999",
+                                                             ">$75,000"))
