@@ -115,3 +115,5 @@ total4$INCOME2 <-factor(total4$INCOME2, levels=1:8, labels=c("<$10,000","$10,000
                                                              ">$75,000"))
                                                              
 total4$AGE <-factor(total4$X_AGEG5YR, levels=1:4, labels = c("18-24","25-29","30-34","35-39"))
+
+total4$INSURANCE <- factor(total4$HLTHPLN1, levels=1:2, labels = c("Insured", "Uninsured")) 
