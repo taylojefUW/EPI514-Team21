@@ -3,6 +3,7 @@ library(haven)
 library(package,character.only=T)
 library(magrittr)
 library(dplyr)
+library(foreign)
 brfss2019 <- read.xport("LLCP2019.XPT")
 brfss2018 <- read.xport("LLCP2018.XPT")
 brfss2017 <- read.xport("LLCP2017.XPT")
@@ -87,7 +88,8 @@ total4$EMPLOY1[total4$EMPLOY1 == 9] <- NA
 total4$INCOME2[total4$INCOME2 == 77] <- NA
 total4$INCOME2[total4$INCOME2 == 99] <- NA
 
-total4$HPVADVC2[total4$HPVADVC2 == 7:9] <- NA
+total4$HPVADVC2[total4$HPVADVC2 == 7] <- NA
+total4$HPVADVC2[total4$HPVADVC2 == 9] <- NA
 
 total4$HPVADSHT[total4$HPVADSHT == 77] <- NA
 total4$HPVADSHT[total4$HPVADSHT == 99] <- NA
