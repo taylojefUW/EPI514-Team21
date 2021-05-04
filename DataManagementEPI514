@@ -97,3 +97,12 @@ total4$HPVADVC2[total4$HPVADVC2 == 9] <- NA
 
 total4$HPVADSHT[total4$HPVADSHT == 77] <- NA
 total4$HPVADSHT[total4$HPVADSHT == 99] <- NA
+
+
+#Creating binary HPV vaccine variable (1= yes, have received HPV vaccine, 2= no, have not received HPV vaccine)  
+
+total4$HPVVAC[total4$HPVADVC2 == 1] <- 1
+total4$HPVVAC[total4$HPVADVC2 >= 2] <- 2
+total4$HPVVAC <-factor(total4$HPVVAC, levels=1:2, labels=c("Yes","No"))
+  
+table(total4$HPVVAC)
