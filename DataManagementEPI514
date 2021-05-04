@@ -1,0 +1,24 @@
+setwd("C:/epi514")
+library(haven)
+for (package in c('foreign','gtools','questionr','MASS','caret','readr','ggplot2','magrittr','ggthemes','dplyr','corrplot','caTools')) {
+  if (!require(package, character.only=T, quietly=T)) {
+    install.packages(package)
+    library(package,character.only=T)
+    library(magrittr)
+    library(dplyr)
+  }
+}
+LLCP2019 <- read.xport("LLCP2019.XPT") %>% select(X_STATE, IYEAR, DISPCODE, X_PSU,
+                                                  SEXVAR, HLTHPLN1, PERSDOC2, MEDCOST,
+                                                  CHECKUP1, EMPLOY1, INCOME2, X_IMPRACE,
+                                                  HPVADVC3, HPVADSHT, X_STSTR, X_LLCPWT)
+LLCP2018 <- read.xport("LLCP2018.XPT")
+LLCP2017 <- read.xport("LLCP2017.XPT")
+LLCP2016 <- read.xport("LLCP2016.XPT")
+LLCP2015 <- read.xport("LLCP2015.XPT")
+LLCP19V1 <- read.xport("LLCP19V1.XPT")
+LLCP18V1 <- read.xport("LLCP18V1.XPT")
+LLCP17V1 <- read.xport("LLCP17V1.XPT")
+LLCP16V1 <- read.xport("LLCP16V1.XPT")
+LLCP16V2 <- read.xport("LLCP16V2.XPT")
+LLCP15V2 <- read.xport("LLCP15V2.XPT")
