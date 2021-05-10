@@ -46,6 +46,10 @@ brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==4 & brfss2018_c$SOMALE ==4] <-4  #ot
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==7 & brfss2018_c$SOMALE ==7] <-7 #don't know 
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==9 & brfss2018_c$SOMALE ==9] <-9 #Refused/missing
 
+#Dropping SOMALE and SOFEMALE variables so datsets can be merged 
+brfss2019_c <- brfss2019_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT","SXORIENT","TRNSGNDR")]
+brfss2018_c <- brfss2018_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT","TRNSGNDR")]
+
 #Renaming variables so everything matches up and can be merged 
 colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
 colnames(brfss2019_c)[which(names(brfss2019_c) == "SEXVAR")] <- "SEX1"
