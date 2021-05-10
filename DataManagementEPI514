@@ -46,7 +46,7 @@ brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==4 & brfss2018_c$SOMALE ==4] <-4  #ot
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==7 & brfss2018_c$SOMALE ==7] <-7 #don't know 
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==9 & brfss2018_c$SOMALE ==9] <-9 #Refused/missing
 
-#Dropping SOMALE and SOFEMALE variables so datsets can be merged 
+#Dropping SOMALE and SOFEMALE variables so datasets can be merged 
 brfss2019_c <- brfss2019_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT","SXORIENT","TRNSGNDR")]
 brfss2018_c <- brfss2018_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT","TRNSGNDR")]
 
@@ -113,7 +113,7 @@ total4$HPVADSHT[total4$HPVADSHT == 77] <- NA
 total4$HPVADSHT[total4$HPVADSHT == 99] <- NA
 
 
-#Creating binary HPV vaccine variable (1= yes, have received HPV vaccine, 2= no, have not received HPV vaccine)  
+#Creating binary HPV vaccine variable (outcome) (1= yes, have received HPV vaccine, 2= no, have not received HPV vaccine)  
 
 total4$HPVVAC[total4$HPVADVC2 == 1] <- 1
 total4$HPVVAC[total4$HPVADVC2 >= 2] <- 2
