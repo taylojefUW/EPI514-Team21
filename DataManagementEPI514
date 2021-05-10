@@ -31,7 +31,7 @@ brfss2016_c <- brfss2016_c[brfss2016_c$X_STATE==c(1,9,15,29,31,37,45,46,48), ]
 brfss2015_c <- brfss2015[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2015_c <- brfss2015_c[brfss2015_c$X_STATE==c(13, 25, 28, 45, 54), ]
 
-#Combining the 2 sexual orientation variables in 2019& 2018 datasets into one 
+#Combining the 2 sexual orientation variables in 2019&2018 datasets into one 
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==2 & brfss2019_c$SOMALE ==2] <-1  #straight
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==1 & brfss2019_c$SOMALE ==1] <-2  #gay/lesbian  
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==3 & brfss2019_c$SOMALE ==3] <-3  #bisexual  
@@ -46,12 +46,14 @@ brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==4 & brfss2018_c$SOMALE ==4] <-4  #ot
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==7 & brfss2018_c$SOMALE ==7] <-7 #don't know 
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==9 & brfss2018_c$SOMALE ==9] <-9 #Refused/missing
 
+#Renaming variables so everything matches up and can be merged 
 colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
 colnames(brfss2019_c)[which(names(brfss2019_c) == "SEXVAR")] <- "SEX1"
 colnames(brfss2017_c)[which(names(brfss2017_c) == "SEX")] <- "SEX1"
 colnames(brfss2016_c)[which(names(brfss2016_c) == "SEX")] <- "SEX1"
 colnames(brfss2015_c)[which(names(brfss2015_c) == "SEX")] <- "SEX1"
 
+#Merging years into one dataset 
 total <- rbind(brfss2019_c, brfss2018_c)
 total2 <- rbind(total, brfss2017_c)
 total3 <- rbind(total2, brfss2016_c)
