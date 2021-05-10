@@ -81,6 +81,7 @@ colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "SEX")] <- "SEX1"
 
 
 #Assigning missingness to variables 
+
 total4$X_AGEG5YR[total4$X_AGEG5YR > 4] <- NA
 
 total4$DISPCODE[total4$DISPCODE == 1200] <- NA
@@ -106,11 +107,20 @@ total4$EMPLOY1[total4$EMPLOY1 == 9] <- NA
 total4$INCOME2[total4$INCOME2 == 77] <- NA
 total4$INCOME2[total4$INCOME2 == 99] <- NA
 
+total4$X_RACE[total4$X_RACE ==9]<- NA
+
 total4$HPVADVC2[total4$HPVADVC2 == 7] <- NA
 total4$HPVADVC2[total4$HPVADVC2 == 9] <- NA
 
 total4$HPVADSHT[total4$HPVADSHT == 77] <- NA
 total4$HPVADSHT[total4$HPVADSHT == 99] <- NA
+total4$HPVADSHT[total4$HPVADSHT >= 4] <- NA
+
+total4$SXORIENT[total4$SXORIENT == 7] <- NA
+total4$SXORIENT[total4$SXORIENT == 9] <- NA
+
+total4$TRNSGNDR[total4$TRNSGNDR == 7] <- NA
+total4$TRNSGNDR[total4$TRNSGNDR == 9] <- NA
 
 
 #Creating binary HPV vaccine variable (outcome) (1= yes, have received HPV vaccine, 2= no, have not received HPV vaccine)  
