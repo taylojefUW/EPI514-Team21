@@ -16,27 +16,25 @@ brfss16V1 <- read.xport("LLCP16V1.XPT")
 brfss16V2 <- read.xport("LLCP16V2.XPT")
 brfss15V2 <- read.xport("LLCP15V2.XPT")
 
-brfss2019_c <- brfss2019[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC3", "HPVADSHT")]
+brfss2019_c <- brfss2019[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT", "SXORIENT", "TRNSGNDR")]
 brfss2019_c <- brfss2019_c[brfss2019_c$X_STATE==c(13,17,28,46,47,48), ]
 
-brfss2018_c <- brfss2018[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC2", "HPVADSHT")]
+brfss2018_c <- brfss2018[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2018_c <- brfss2018_c[brfss2018_c$X_STATE==c(1,9,15,28,29,34,47,48), ]
 
-brfss2017_c <- brfss2017[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC2", "HPVADSHT")]
+brfss2017_c <- brfss2017[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2017_c <- brfss2017_c[brfss2017_c$X_STATE==c(5,13,28,33,45,47,48), ]
 
-brfss2016_c <- brfss2016[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
+brfss2016_c <- brfss2016[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2016_c <- brfss2016_c[brfss2016_c$X_STATE==c(1,9,15,29,31,37,45,46,48), ]
 
-brfss2015_c <- brfss2015[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
+brfss2015_c <- brfss2015[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2015_c <- brfss2015_c[brfss2015_c$X_STATE==c(13, 25, 28, 45, 54), ]
 
 colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
 colnames(brfss2019_c)[which(names(brfss2019_c) == "SEXVAR")] <- "SEX1"
 colnames(brfss2017_c)[which(names(brfss2017_c) == "SEX")] <- "SEX1"
 colnames(brfss2016_c)[which(names(brfss2016_c) == "SEX")] <- "SEX1"
-colnames(brfss2016_c)[which(names(brfss2016_c) == "X_RACE")] <- "X_IMPRACE"
-colnames(brfss2015_c)[which(names(brfss2015_c) == "X_RACE")] <- "X_IMPRACE"
 colnames(brfss2015_c)[which(names(brfss2015_c) == "SEX")] <- "SEX1"
 
 total <- rbind(brfss2019_c, brfss2018_c)
@@ -45,9 +43,9 @@ total3 <- rbind(total2, brfss2016_c)
 total4 <- rbind(total3, brfss2015_c)
 
 #OPTIONAL VARIABLES
-brfss2019v1_c <- brfss19V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC3", "HPVADSHT")]
-brfss2018v1_c <- brfss18V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC2", "HPVADSHT")]
-brfss2017v1_c <- brfss17V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_IMPRACE", "HPVADVC2", "HPVADSHT")]
+brfss2019v1_c <- brfss19V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT")]
+brfss2018v1_c <- brfss18V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
+brfss2017v1_c <- brfss17V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
 brfss2016v1_c <- brfss16V2[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
 brfss2015v1_c <- brfss15V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
 brfss2015v2_c <- brfss15V2[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
@@ -56,13 +54,8 @@ colnames(brfss2019v1_c)[which(names(brfss2019v1_c) == "HPVADVC3")] <- "HPVADVC2"
 colnames(brfss2019v1_c)[which(names(brfss2019v1_c) == "SEXVAR")] <- "SEX1"
 colnames(brfss2017v1_c)[which(names(brfss2017v1_c) == "SEX")] <- "SEX1"
 colnames(brfss2016v1_c)[which(names(brfss2016v1_c) == "SEX")] <- "SEX1"
-colnames(brfss2016v1_c)[which(names(brfss2016v1_c) == "X_RACE")] <- "X_IMPRACE"
-colnames(brfss2015v1_c)[which(names(brfss2015v1_c) == "X_RACE")] <- "X_IMPRACE"
 colnames(brfss2015v1_c)[which(names(brfss2015v1_c) == "SEX")] <- "SEX1"
-colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "X_RACE")] <- "X_IMPRACE"
 colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "SEX")] <- "SEX1"
-
-
 
 
 
@@ -109,10 +102,12 @@ table(total4$HPVVAC)
 
 #Factoring/Labeling variables 
 
-total4$INCOME2 <-factor(total4$INCOME2, levels=1:8, labels=c("<$10,000","$10,000-$14,999",
+total4$INCOME <-factor(total4$INCOME2, levels=1:8, labels=c("<$10,000","$10,000-$14,999",
                                                              "$15,000-$19,999","$20,000-$24,999",
                                                              "$25,000-$34,999","$35,000-$49,999","$50,000-$74,999",
                                                              ">$75,000"))
+                                                             
+     
                                                              
 total4$AGE <-factor(total4$X_AGEG5YR, levels=1:4, labels = c("18-24","25-29","30-34","35-39"))
 
