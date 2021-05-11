@@ -127,12 +127,6 @@ summary(clean$X_AGEG5YR) #check to see if worked
 
 clean$DISPCODE[clean$DISPCODE == 1200] <- NA  #Keeping only completed interviews 
 
-clean$SEX1[clean$SEX1 == 1] <- NA
-clean$SEX1[clean$SEX1 == 7] <- NA
-clean$SEX1[clean$SEX1 == 9] <- NA
-
-summary(clean$SEX1) 
-
 clean$HLTHPLN1[clean$HLTHPLN1 == 7] <- NA
 clean$HLTHPLN1[clean$HLTHPLN1 == 9] <- NA
 
