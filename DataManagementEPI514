@@ -16,28 +16,54 @@ brfss16V1 <- read.xport("LLCP16V1.XPT")
 brfss16V2 <- read.xport("LLCP16V2.XPT")
 brfss15V2 <- read.xport("LLCP15V2.XPT")
 
-brfss2019_c <- brfss2019[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT", "SOMALE", "SOFEMALE", "TRNSGNDR")]
+brfss2019V1_c <- brfss19V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV1", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT", "SOMALE", "SOFEMALE","TRNSGNDR")]
+brfss2019V1_c <- brfss2019V1_c[brfss2019V1_c$X_STATE==25, ]
+
+brfss2019_c <- brfss2019[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT", "SOMALE", "SOFEMALE","TRNSGNDR")]
 brfss2019_c <- brfss2019_c[brfss2019_c$X_STATE==c(13,17,28,46,47,48), ]
 
-brfss2018_c <- brfss2018[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT", "SOMALE", "SOFEMALE","TRNSGNDR")]
+brfss2018_c <- brfss2018[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SOMALE", "SOFEMALE", "TRNSGNDR")]
 brfss2018_c <- brfss2018_c[brfss2018_c$X_STATE==c(1,9,15,28,29,34,47,48), ]
+
+brfss2018V1_c <-brfss18V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV1", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SOMALE", "SOFEMALE", "TRNSGNDR")]
+brfss2018V1_c <- brfss2018V1_c[brfss2018V1_c$X_STATE==25, ]
 
 brfss2017_c <- brfss2017[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2017_c <- brfss2017_c[brfss2017_c$X_STATE==c(5,13,28,33,45,47,48), ]
 
+brfss2017V1_c <- brfss17V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV1", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
+brfss2017V1_c <- brfss2017V1_c[brfss2017V1_c$X_STATE==25, ]
+
 brfss2016_c <- brfss2016[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2016_c <- brfss2016_c[brfss2016_c$X_STATE==c(1,9,15,29,31,37,45,46,48), ]
+
+brfss2016V2_c <- brfss16V2[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV2", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
+brfss2016V2_c <- brfss2016V2_c[brfss2016V2_c$X_STATE==c(25,6), ]
 
 brfss2015_c <- brfss2015[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
 brfss2015_c <- brfss2015_c[brfss2015_c$X_STATE==c(13, 25, 28, 45, 54), ]
 
-#Combining the 2 sexual orientation variables in 2019&2018 datasets into one 
+brfss2015V2_c <- brfss15V2[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV2", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
+brfss2015V2_c <- brfss2015V2_c[brfss2015V2_c$X_STATE==c(8,48), ]
+
+brfss2015V1_c <- brfss15V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV1", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT", "TRNSGNDR")]
+brfss2015V1_c <- brfss2015V1_c[brfss2015V1_c$X_STATE==c(12,23), ]
+
+
+#Combining the 2 sexual orientation variables in 2019& 2018 datasets into one 
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==2 & brfss2019_c$SOMALE ==2] <-1  #straight
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==1 & brfss2019_c$SOMALE ==1] <-2  #gay/lesbian  
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==3 & brfss2019_c$SOMALE ==3] <-3  #bisexual  
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==4 & brfss2019_c$SOMALE ==4] <-4  #other 
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==7 & brfss2019_c$SOMALE ==7] <-7 #don't know 
 brfss2019_c$SXORIENT[brfss2019_c$SOFEMALE ==9 & brfss2019_c$SOMALE ==9] <-9 #Refused/missing
+
+brfss2019V1_c$SXORIENT[brfss2019V1_c$SOFEMALE ==2 & brfss2019V1_c$SOMALE ==2] <-1  #straight
+brfss2019V1_c$SXORIENT[brfss2019V1_c$SOFEMALE ==1 & brfss2019V1_c$SOMALE ==1] <-2  #gay/lesbian  
+brfss2019V1_c$SXORIENT[brfss2019V1_c$SOFEMALE ==3 & brfss2019V1_c$SOMALE ==3] <-3  #bisexual  
+brfss2019V1_c$SXORIENT[brfss2019V1_c$SOFEMALE ==4 & brfss2019V1_c$SOMALE ==4] <-4  #other 
+brfss2019V1_c$SXORIENT[brfss2019V1_c$SOFEMALE ==7 & brfss2019V1_c$SOMALE ==7] <-7 #don't know 
+brfss2019V1_c$SXORIENT[brfss2019V1_c$SOFEMALE ==9 & brfss2019V1_c$SOMALE ==9] <-9
 
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==2 & brfss2018_c$SOMALE ==2] <-1  #straight
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==1 & brfss2018_c$SOMALE ==1] <-2  #gay/lesbian  
@@ -46,39 +72,53 @@ brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==4 & brfss2018_c$SOMALE ==4] <-4  #ot
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==7 & brfss2018_c$SOMALE ==7] <-7 #don't know 
 brfss2018_c$SXORIENT[brfss2018_c$SOFEMALE ==9 & brfss2018_c$SOMALE ==9] <-9 #Refused/missing
 
+brfss2018V1_c$SXORIENT[brfss2018V1_c$SOFEMALE ==2 & brfss2018V1_c$SOMALE ==2] <-1  #straight
+brfss2018V1_c$SXORIENT[brfss2018V1_c$SOFEMALE ==1 & brfss2018V1_c$SOMALE ==1] <-2  #gay/lesbian  
+brfss2018V1_c$SXORIENT[brfss2018V1_c$SOFEMALE ==3 & brfss2018V1_c$SOMALE ==3] <-3  #bisexual  
+brfss2018V1_c$SXORIENT[brfss2018V1_c$SOFEMALE ==4 & brfss2018V1_c$SOMALE ==4] <-4  #other 
+brfss2018V1_c$SXORIENT[brfss2018V1_c$SOFEMALE ==7 & brfss2018V1_c$SOMALE ==7] <-7 #don't know 
+brfss2018V1_c$SXORIENT[brfss2018V1_c$SOFEMALE ==9 & brfss2018V1_c$SOMALE ==9] <-9 #Refused/missing
+
 #Dropping SOMALE and SOFEMALE variables so datasets can be merged 
 brfss2019_c <- brfss2019_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT","SXORIENT","TRNSGNDR")]
 brfss2018_c <- brfss2018_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LLCPWT", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT","TRNSGNDR")]
 
-#Renaming variables so everything matches up and can be merged 
+brfss2019V1_c <- brfss2019V1_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV1", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT","SXORIENT","TRNSGNDR")]
+brfss2018V1_c <- brfss2018V1_c[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "X_LCPWTV1", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT","SXORIENT","TRNSGNDR")]
+
 colnames(brfss2019_c)[which(names(brfss2019_c) == "HPVADVC3")] <- "HPVADVC2"
 colnames(brfss2019_c)[which(names(brfss2019_c) == "SEXVAR")] <- "SEX1"
+
+colnames(brfss2019V1_c)[which(names(brfss2019V1_c) == "HPVADVC3")] <- "HPVADVC2"
+colnames(brfss2019V1_c)[which(names(brfss2019V1_c) == "SEXVAR")] <- "SEX1"
+
 colnames(brfss2017_c)[which(names(brfss2017_c) == "SEX")] <- "SEX1"
+colnames(brfss2017V1_c)[which(names(brfss2017V1_c) == "SEX")] <- "SEX1"
+
+colnames(brfss2016V2_c)[which(names(brfss2016V2_c) == "SEX")] <- "SEX1"
 colnames(brfss2016_c)[which(names(brfss2016_c) == "SEX")] <- "SEX1"
+
 colnames(brfss2015_c)[which(names(brfss2015_c) == "SEX")] <- "SEX1"
+colnames(brfss2015V1_c)[which(names(brfss2015V1_c) == "SEX")] <- "SEX1"
+colnames(brfss2015V2_c)[which(names(brfss2015V2_c) == "SEX")] <- "SEX1"
 
-#Merging years into one dataset 
-total <- rbind(brfss2019_c, brfss2018_c)
-total2 <- rbind(total, brfss2017_c)
-total3 <- rbind(total2, brfss2016_c)
-total4 <- rbind(total3, brfss2015_c)
+colnames(brfss2015V1_c)[which(names(brfss2015V1_c) == "X_LCPWTV1")] <- "X_LLCPWT"
+colnames(brfss2015V2_c)[which(names(brfss2015V2_c) == "X_LCPWTV2")] <- "X_LLCPWT"
+colnames(brfss2016V2_c)[which(names(brfss2016V2_c) == "X_LCPWTV2")] <- "X_LLCPWT"
+colnames(brfss2017V1_c)[which(names(brfss2017V1_c) == "X_LCPWTV1")] <- "X_LLCPWT"
+colnames(brfss2018V1_c)[which(names(brfss2018V1_c) == "X_LCPWTV1")] <- "X_LLCPWT"
+colnames(brfss2019V1_c)[which(names(brfss2019V1_c) == "X_LCPWTV1")] <- "X_LLCPWT"
 
-#OPTIONAL VARIABLES
-brfss2019v1_c <- brfss19V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEXVAR", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC3", "HPVADSHT")]
-brfss2018v1_c <- brfss18V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX1", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
-brfss2017v1_c <- brfss17V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
-brfss2016v1_c <- brfss16V2[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
-brfss2015v1_c <- brfss15V1[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
-brfss2015v2_c <- brfss15V2[, c("X_AGEG5YR", "X_STATE", "IYEAR", "DISPCODE", "X_PSU", "X_STSTR", "SEX", "HLTHPLN1", "PERSDOC2", "MEDCOST", "CHECKUP1", "EMPLOY1", "INCOME2", "X_RACE", "HPVADVC2", "HPVADSHT")]
-
-colnames(brfss2019v1_c)[which(names(brfss2019v1_c) == "HPVADVC3")] <- "HPVADVC2"
-colnames(brfss2019v1_c)[which(names(brfss2019v1_c) == "SEXVAR")] <- "SEX1"
-colnames(brfss2017v1_c)[which(names(brfss2017v1_c) == "SEX")] <- "SEX1"
-colnames(brfss2016v1_c)[which(names(brfss2016v1_c) == "SEX")] <- "SEX1"
-colnames(brfss2015v1_c)[which(names(brfss2015v1_c) == "SEX")] <- "SEX1"
-colnames(brfss2015v2_c)[which(names(brfss2015v2_c) == "SEX")] <- "SEX1"
-
-
+total <- rbind(brfss2019_c, brfss2019V1_c)
+total2 <- rbind(total, brfss2018_c)
+total3 <- rbind(total2, brfss2018V1_c)
+total4 <- rbind(total3, brfss2017_c)
+total5 <- rbind(total4, brfss2017V1_c)
+total6 <- rbind(total5, brfss2016_c)
+total7 <- rbind(total6, brfss2016V2_c)
+total8 <- rbind(total7, brfss2015_c)
+total9 <- rbind(total8, brfss2015V2_c)
+clean <- rbind(total9, brfss2015V1_c)
 
 #Assigning missingness to variables 
 
