@@ -271,4 +271,20 @@ table(data$income, data$HPVVAC)
 
 table(data$INSURANCE, data$HPVVAC)
 
+
+#code used for table 2 
+
+data$COSTBARRIERS[data$COSTBARRIERS == "Yes"]<-1      #Reordering values of the variable to accomodate 2x2 layout
+data$COSTBARRIERS[data$COSTBARRIERS == "No"]<-2
+
+data$COSTBARRIERS <-factor(data$COSTBARRIERS, levels=1:2, labels=c("Yes","No"))
+
+
+strat_cost <- with(data,
+                  table(COSTBARRIERS, HPVVAC))
+
+strat_cost
+
+epi.2by2(strat_cost)
+
                                                     
