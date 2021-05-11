@@ -274,6 +274,25 @@ table(data$INSURANCE, data$HPVVAC)
 
 #code used for table 2 
 
+# Recode variables so that the resulting table looks like the following:
+#
+# -----------	----------	----------	----------
+#             Disease   +	  Disease -	Total
+# -----------	----------	----------	----------
+#   Expose +  	a	          b	          a+b
+# Expose -	    c	          d	          c+d
+# -----------	----------	----------	----------
+#   Total	a+c	b+d	a+b+c+d
+# -----------	----------	----------	----------
+
+data$HPVVAC[data$HPVVAC == "Yes"]<-1 
+data$HPVVAC[data$HPVVAC == "No"]<-2
+
+data$HPVVAC <-factor(data$HPVVAC, levels=1:2, labels=c("Yes","No"))
+
+table(data$HPVVAC)    #check
+
+
 #RR- insurance status and HPVVAC status 
 
 table(data$INSURANCE)
