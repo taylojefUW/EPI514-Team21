@@ -288,7 +288,7 @@ strat_cost
 epi.2by2(strat_cost)
 
 
-#income 
+#RR Income levels and HPV Vac status
 
 data$income[data$income== "<$10,000"]<-1
 data$income[data$income== "$10,000-$24,999"]<-2
@@ -299,15 +299,66 @@ data$income[data$income== ">$75,000"]<-5
 data$income <-factor(data$income, levels= 1:5, labels=c("<$10,000","$10,000-$24,999","$25,000-$49,999","$50,000-$74,999",">$75,000"))
 
 
-data$income_1025_less10 <- factor(data$income,
-                                  levels = levels(data$income)[2:1])
+#<$10,000 vs. >$75,000 
 
-table(data$income_1025_less10, data$HPVVAc)
+data$income_less10_more75 <-factor(data$income,
+                                   levels = levels(data$income)[c(1,5)])
+  
+table(data$income_less10_more75)  
 
 strat_income1 <- with(data,
-                table(income_1025_less10, HPVVAC))
-
-
+                table(income_less10_more75, HPVVAC))
+  
+  
 strat_income1
+
+epi.2by2(strat_income1)
+
+
+#$10,000-$24,999 vs. $>75,000 
+
+data$income_1025_more75 <- factor(data$income,
+                                  levels = levels(data$income)[c(2,5)])
+
+table(data$income_1025_more75)  
+
+strat_income2 <- with(data,
+                      table(income_1025_more75, HPVVAC))
+
+
+strat_income2
+
+epi.2by2(strat_income2)
+
+
+#$25,000-$49,999 vs.>$75,0000 
+
+data$income_2550_more75 <- factor(data$income,
+                                  levels = levels(data$income)[c(3,5)])
+
+table(data$income_2550_more75)  
+
+strat_income3 <- with(data,
+                      table(income_2550_more75, HPVVAC))
+
+
+strat_income3
+
+epi.2by2(strat_income3)
+
+
+#$50,000-$74,999  vs. >$75,00
+data$income_5075_more75 <- factor(data$income,
+                                  levels = levels(data$income)[c(4,5)])
+
+table(data$income_5075_more75)  
+
+strat_income4 <- with(data,
+                      table(income_5075_more75, HPVVAC))
+
+
+strat_income4
+
+epi.2by2(strat_income4)
 
                                                     
