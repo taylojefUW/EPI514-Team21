@@ -186,11 +186,11 @@ clean$TRNSGNDR[clean$TRNSGNDR == 9] <- NA
 
 #Creating binary HPV vaccine variable (outcome) (1= yes, have received HPV vaccine, 2= no, have not received HPV vaccine)  
 
-total4$HPVVAC[total4$HPVADVC2 == 1] <- 1
-total4$HPVVAC[total4$HPVADVC2 >= 2] <- 2
-total4$HPVVAC <-factor(total4$HPVVAC, levels=1:2, labels=c("Yes","No"))
+clean$HPVVAC[clean$HPVADVC2 == 1] <- 1
+clean$HPVVAC[clean$HPVADVC2 >= 2] <- 2
+clean$HPVVAC <-factor(clean$HPVVAC, levels=1:2, labels=c("Yes","No"))
   
-table(total4$HPVVAC)
+table(clean$HPVVAC)
 
 #Creating exposure variables 
 
