@@ -251,5 +251,11 @@ table(clean$CHECKUP1)
 table(clean$TIMESINCELAST) 
 
 #Writing CSV of data 
+
+clean <- clean[, c("X_STATE","IYEAR","DISPCODE","X_PSU","X_STSTR","X_LLCPWT","SEX1","HPVVAC","income",
+                   "INSURANCE","COSTBARRIERS","PCPstatus","RACE","AGE","SEXORIENT","TRANSGENDER","TIMESINCELAST","EMPLOYMENT",
+                   "HPVADSHT")]
+
+write.csv(clean,'epi514finaldata.csv')
      
-                                                     
+                                                    
