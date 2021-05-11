@@ -287,4 +287,27 @@ strat_cost
 
 epi.2by2(strat_cost)
 
+
+#income 
+
+data$income[data$income== "<$10,000"]<-1
+data$income[data$income== "$10,000-$24,999"]<-2
+data$income[data$income== "$25,000-$49,999"]<-3
+data$income[data$income== "$50,000-$74,999"]<-4
+data$income[data$income== ">$75,000"]<-5
+
+data$income <-factor(data$income, levels= 1:5, labels=c("<$10,000","$10,000-$24,999","$25,000-$49,999","$50,000-$74,999",">$75,000"))
+
+
+data$income_1025_less10 <- factor(data$income,
+                                  levels = levels(data$income)[2:1])
+
+table(data$income_1025_less10, data$HPVVAc)
+
+strat_income1 <- with(data,
+                table(income_1025_less10, HPVVAC))
+
+
+strat_income1
+
                                                     
