@@ -243,6 +243,12 @@ clean$EMPLOYMENT <-factor(clean$EMPLOY1, levels=1:8, labels = c("Employed","Self
 table(clean$EMPLOY1)
 table(clean$EMPLOYMENT)
 
+clean$CHECKUP1[clean$CHECKUP1 == 8]<-5
+
+clean$TIMESINCELAST <- factor(clean$CHECKUP1, levels=1:5, labels = c("Within past year", "within past 2 years", "Within past 5 years",
+                                                                    ">5 years ago", "Never"))
+table(clean$CHECKUP1)
+table(clean$TIMESINCELAST) 
 
      
                                                      
