@@ -209,6 +209,7 @@ clean$PCPstatus <- factor(clean$PERSDOC2, levels=1:3, labels = c("1 personal doc
 
 table(clean$PCPstatus)
 
+#Creating other variables of interest 
 
 clean$RACE <- factor(clean$X_RACE, levels=1:8, labels = c("White", "Black", "American Indian/Alska Native","Asian", 
                                                             "Native Hawaiian", "Other", "Multiracial","Hispanic"))
@@ -254,5 +255,20 @@ data <- clean[clean$SEX1 == 2, ]      #filter to keep only female data
 final <- data[data$AGE<=4, ]          #filter to keep only females aged 18-39 
 
 write.csv(final,'epi514finaldata.csv')
-     
+ 
+
+
+
+#Code used for table 1 
+
+data <- read.csv("epi514finaldata.csv")
+
+table(data$HPVVAC)
+
+table(data$AGE, data$HPVVAC)
+
+table(data$income, data$HPVVAC)
+
+table(data$INSURANCE, data$HPVVAC)
+
                                                     
