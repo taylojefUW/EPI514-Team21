@@ -274,11 +274,28 @@ table(data$INSURANCE, data$HPVVAC)
 
 #code used for table 2 
 
-data$COSTBARRIERS[data$COSTBARRIERS == "Yes"]<-1      #Reordering values of the variable to accomodate 2x2 layout
+#RR- insurance status and HPVVAC status 
+
+table(data$INSURANCE)
+
+strat_insurance <- with(data,
+                table(INSURANCE, HPVVAC))
+
+strat_insurance
+
+epi.2by2(strat_insurance)
+
+
+#RR cost barriers and HPVVAC status  
+
+table(data$COSTBARRIERS)
+
+data$COSTBARRIERS[data$COSTBARRIERS == "Yes"]<-1 
 data$COSTBARRIERS[data$COSTBARRIERS == "No"]<-2
 
 data$COSTBARRIERS <-factor(data$COSTBARRIERS, levels=1:2, labels=c("Yes","No"))
 
+table(data$COSTBARRIERS)
 
 strat_cost <- with(data,
                   table(COSTBARRIERS, HPVVAC))
