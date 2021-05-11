@@ -250,8 +250,9 @@ clean <- clean[, c("X_STATE","IYEAR","DISPCODE","X_PSU","X_STSTR","X_LLCPWT","SE
                    "INSURANCE","COSTBARRIERS","PCPstatus","RACE","AGE","SEXORIENT","TRANSGENDER","TIMESINCELAST","EMPLOYMENT",
                    "HPVADSHT")]
                    
-clean <- clean[clean$SEX1 == 2, ]      #filter to keep only female data 
+data <- clean[clean$SEX1 == 2, ]      #filter to keep only female data 
+final <- data[data$AGE<=4, ]          #filter to keep only females aged 18-39 
 
-write.csv(clean,'epi514finaldata.csv')
+write.csv(final,'epi514finaldata.csv')
      
                                                     
