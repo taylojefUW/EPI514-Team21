@@ -122,46 +122,67 @@ clean <- rbind(total9, brfss2015V1_c)
 
 #Assigning missingness to variables 
 
-total4$X_AGEG5YR[total4$X_AGEG5YR > 4] <- NA
+clean$X_AGEG5YR[clean$X_AGEG5YR > 4] <- NA
+summary(clean$X_AGEG5YR) #check to see if worked 
 
-total4$DISPCODE[total4$DISPCODE == 1200] <- NA
+clean$DISPCODE[clean$DISPCODE == 1200] <- NA  #Keeping only completed interviews 
 
-total4$SEX1[total4$SEX1 == 1] <- NA
-total4$SEX1[total4$SEX1 == 7] <- NA
-total4$SEX1[total4$SEX1 == 9] <- NA
+clean$SEX1[clean$SEX1 == 1] <- NA
+clean$SEX1[clean$SEX1 == 7] <- NA
+clean$SEX1[clean$SEX1 == 9] <- NA
 
-total4$HLTHPLN1[total4$HLTHPLN1 == 7] <- NA
-total4$HLTHPLN1[total4$HLTHPLN1 == 9] <- NA 
+summary(clean$SEX1) 
 
-total4$PERSDOC2[total4$PERSDOC2 == 7] <- NA
-total4$PERSDOC2[total4$PERSDOC2 == 9] <- NA
+clean$HLTHPLN1[clean$HLTHPLN1 == 7] <- NA
+clean$HLTHPLN1[clean$HLTHPLN1 == 9] <- NA
 
-total4$MEDCOST[total4$MEDCOST == 7] <- NA
-total4$MEDCOST[total4$MEDCOST == 9] <- NA
+summary(clean$HLTHPLN1)
 
-total4$CHECKUP1[total4$CHECKUP1 == 7] <- NA
-total4$CHECKUP1[total4$CHECKUP1 == 9] <- NA
+clean$PERSDOC2[clean$PERSDOC2 == 7] <- NA
+clean$PERSDOC2[clean$PERSDOC2 == 9] <- NA
 
-total4$EMPLOY1[total4$EMPLOY1 == 9] <- NA
+summary(clean$PERSDOC2)
 
-total4$INCOME2[total4$INCOME2 == 77] <- NA
-total4$INCOME2[total4$INCOME2 == 99] <- NA
+clean$MEDCOST[clean$MEDCOST == 7] <- NA
+clean$MEDCOST[clean$MEDCOST == 9] <- NA
 
-total4$X_RACE[total4$X_RACE ==9]<- NA
+summary(clean$MEDCOST)
 
-total4$HPVADVC2[total4$HPVADVC2 == 7] <- NA
-total4$HPVADVC2[total4$HPVADVC2 == 9] <- NA
+clean$CHECKUP1[clean$CHECKUP1 == 7] <- NA
+clean$CHECKUP1[clean$CHECKUP1 == 9] <- NA
 
-total4$HPVADSHT[total4$HPVADSHT == 77] <- NA
-total4$HPVADSHT[total4$HPVADSHT == 99] <- NA
-total4$HPVADSHT[total4$HPVADSHT >= 4] <- NA
+summary(clean$CHECKUP1)
 
-total4$SXORIENT[total4$SXORIENT == 7] <- NA
-total4$SXORIENT[total4$SXORIENT == 9] <- NA
+clean$EMPLOY1[clean$EMPLOY1 == 9] <- NA
 
-total4$TRNSGNDR[total4$TRNSGNDR == 7] <- NA
-total4$TRNSGNDR[total4$TRNSGNDR == 9] <- NA
+summary(clean$EMPLOY1)
 
+clean$INCOME2[clean$INCOME2 == 77] <- NA
+clean$INCOME2[clean$INCOME2 == 99] <- NA
+
+summary(clean$INCOME2)
+
+clean$X_RACE[clean$X_RACE ==9]<- NA
+summary(clean$X_RACE)
+
+clean$HPVADVC2[clean$HPVADVC2 == 7] <- NA
+clean$HPVADVC2[clean$HPVADVC2 == 9] <- NA
+
+summary(clean$HPVADVC2)
+
+clean$HPVADSHT[clean$HPVADSHT == 77] <- NA
+clean$HPVADSHT[clean$HPVADSHT == 99] <- NA
+clean$HPVADSHT[clean$HPVADSHT >=4]<- NA
+
+summary(clean$HPVADSHT)
+
+clean$SXORIENT[clean$SXORIENT == 7] <- NA
+clean$SXORIENT[clean$SXORIENT == 9] <- NA
+
+summary(clean$SXORIENT)
+
+clean$TRNSGNDR[clean$TRNSGNDR == 7] <- NA
+clean$TRNSGNDR[clean$TRNSGNDR == 9] <- NA
 
 #Creating binary HPV vaccine variable (outcome) (1= yes, have received HPV vaccine, 2= no, have not received HPV vaccine)  
 
