@@ -255,6 +255,8 @@ table(clean$TIMESINCELAST)
 clean <- clean[, c("X_STATE","IYEAR","DISPCODE","X_PSU","X_STSTR","X_LLCPWT","SEX1","HPVVAC","income",
                    "INSURANCE","COSTBARRIERS","PCPstatus","RACE","AGE","SEXORIENT","TRANSGENDER","TIMESINCELAST","EMPLOYMENT",
                    "HPVADSHT")]
+                   
+clean <- clean[clean$SEX1 == 2, ]      #filter to keep only female data 
 
 write.csv(clean,'epi514finaldata.csv')
      
