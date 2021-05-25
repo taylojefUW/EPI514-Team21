@@ -303,7 +303,32 @@ prop.table(income_table, margin = 2)
 
 #code used for table 2 
 
-# Recode variables so that the resulting table looks like the following:
+rm(list=ls())
+setwd("C:/users/rache/downloads/data")
+
+data <- read.csv("epi514final.csv")
+
+View(data)
+
+table(data$HPVVAC)
+
+library(survey)
+library(epiR)
+library(tidyverse)
+library(foreign)
+
+data <- subset(data , !is.na( X_LLCPWT) )
+
+design <- svydesign(
+  id = ~1,
+  strata = ~X_STSTR,
+  weights = ~X_LLCPWT,
+  data = data) 
+
+options(survey.lonely.psu = "adjust")
+
+
+# Recode so that the resulting table looks like the following:
 #
 # -----------	----------	----------	----------
 #             Disease   +	  Disease -	Total
@@ -319,7 +344,8 @@ data$HPVVAC[data$HPVVAC == "No"]<-2
 
 data$HPVVAC <-factor(data$HPVVAC, levels=1:2, labels=c("Yes","No"))
 
-table(data$HPVVAC)    #check
+table(data$HPVVAC)
+
 
 
 #RR- insurance status and HPVVAC status 
@@ -329,9 +355,20 @@ table(data$INSURANCE)
 strat_insurance <- with(data,
                 table(INSURANCE, HPVVAC))
 
+
 strat_insurance
 
+prop.table(strat_insurance)
+
 epi.2by2(strat_insurance)
+
+
+#Adjusted for age- insurance status and HPVVAC status 
+
+(age_strat_insurance <- table(data$INSURANCE, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_insurance)
+
 
 
 #RR cost barriers and HPVVAC status  
@@ -343,14 +380,24 @@ data$COSTBARRIERS[data$COSTBARRIERS == "No"]<-2
 
 data$COSTBARRIERS <-factor(data$COSTBARRIERS, levels=1:2, labels=c("Yes","No"))
 
+
+
 table(data$COSTBARRIERS)
 
 strat_cost <- with(data,
                   table(COSTBARRIERS, HPVVAC))
 
+
 strat_cost
 
 epi.2by2(strat_cost)
+
+
+#Adjusted for age- cost barriers and HPVVAC status 
+
+(age_strat_cost <- table(data$COSTBARRIERS, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_cost)
 
 
 #RR Income levels and HPV Vac status
@@ -363,6 +410,17 @@ data$income[data$income== ">$75,000"]<-5
 
 data$income <-factor(data$income, levels= 1:5, labels=c("<$10,000","$10,000-$24,999","$25,000-$49,999","$50,000-$74,999",">$75,000"))
 
+table(data$income)
+
+table(data$income, data$HPVVAC)
+
+
+strat_income12 <- with(data,
+                      table(income, HPVVAC))
+
+
+
+strat_income12
 
 #<$10,000 vs. >$75,000 
 
@@ -380,6 +438,13 @@ strat_income1
 epi.2by2(strat_income1)
 
 
+#Adjusted for age- income <$10,000 and HPVVAC status 
+
+(age_strat_income1 <- table(data$income_less10_more75, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_income1)
+
+
 #$10,000-$24,999 vs. $>75,000 
 
 data$income_1025_more75 <- factor(data$income,
@@ -391,9 +456,19 @@ strat_income2 <- with(data,
                       table(income_1025_more75, HPVVAC))
 
 
+
 strat_income2
 
 epi.2by2(strat_income2)
+
+
+
+#Adjusted for age- income $10,000-$24,999 and HPVVAC status 
+
+(age_strat_income2 <- table(data$income_1025_more75, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_income2)
+
 
 
 #$25,000-$49,999 vs.>$75,0000 
@@ -401,7 +476,7 @@ epi.2by2(strat_income2)
 data$income_2550_more75 <- factor(data$income,
                                   levels = levels(data$income)[c(3,5)])
 
-table(data$income_2550_more75)  
+table(data$income_2550_more75, data$HPVVAC)  
 
 strat_income3 <- with(data,
                       table(income_2550_more75, HPVVAC))
@@ -410,6 +485,14 @@ strat_income3 <- with(data,
 strat_income3
 
 epi.2by2(strat_income3)
+
+
+#Adjusted for age- income $25,000-$49,999 and HPVVAC status 
+
+(age_strat_income3 <- table(data$income_2550_more75, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_income3)
+
 
 
 #$50,000-$74,999  vs. >$75,00
@@ -424,6 +507,140 @@ strat_income4 <- with(data,
 
 strat_income4
 
+
 epi.2by2(strat_income4)
 
-                                                    
+
+
+#Adjusted for age- income $50,000-$74,999 and HPVVAC status 
+
+(age_strat_income4 <- table(data$income_5075_more75, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_income4)
+
+
+
+#PCP Status and HPVVAC 
+
+table(data$PCPstatus)
+table(data$PCPstatus, data$HPVVAC)
+
+#1 or more doc vs. no docs 
+
+data$PCPstatus[data$PCPstatus== ">1 personal doctor"|data$PCPstatus== "1 personal doctor"]<-1
+data$PCPstatus[data$PCPstatus== "No"]<-2
+
+data$PCPstatus <-factor(data$PCPstatus, levels= 1:2, labels=c("Has a personal doctor","No"))
+
+
+
+table(data$PCPstatus)  
+
+strat_PCPstatus <- with(data,
+                      table(PCPstatus, HPVVAC))
+
+
+strat_PCPstatus
+
+epi.2by2(strat_PCPstatus)   #RR = 1.17 (1.06, 1.29)  #p-value= 0.0 
+#statistically significant results! 
+
+
+
+
+#Adjusted for age- PCP status and HPVVAC status 
+
+(age_strat_PCP <- table(data$PCPstatus, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_PCP)
+
+
+
+#Length of time since last PCP visit 
+
+table(data$TIMESINCELAST, data$HPVVAC)
+
+data$TIMESINCELAST[data$TIMESINCELAST== "Within past year"] <-1
+data$TIMESINCELAST[data$TIMESINCELAST== "within past 2 years"] <-2
+data$TIMESINCELAST[data$TIMESINCELAST== "Within past 5 years"] <-3 
+data$TIMESINCELAST[data$TIMESINCELAST== ">5 years ago" | data$TIMESINCELAST== "Never"]<-4
+
+
+data$TIMESINCELAST <-factor(data$TIMESINCELAST, levels= 1:4, labels=c("<1year","1-2years","2-5years",">5years or never"))
+
+
+table(data$TIMESINCELAST)
+
+
+#>5years vs. 2-5years 
+
+data$time_greater5vs2to5<-factor(data$TIMESINCELAST,
+                               levels = levels(data$TIMESINCELAST)[c(3,4)])
+
+table(data$time_greater5vs2to5)  
+
+strat_time_greater5vs2to5 <- with(data,
+                              table(time_greater5vs2to5, HPVVAC))
+
+
+strat_time_greater5vs2to5
+
+epi.2by2(strat_time_greater5vs2to5)  #RR= 1.48 (1.14, 1.93)
+
+
+
+#Adjusted for age- 2-5 years and HPVVAC status 
+
+(age_strat_time1 <- table(data$time_greater5vs2to5, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_time1)
+
+
+
+#1-2 years vs. >5years 
+
+data$time_greater5vs1to2<-factor(data$TIMESINCELAST,
+                                 levels = levels(data$TIMESINCELAST)[c(2,4)])
+
+table(data$time_greater5vs1to2)  
+
+strat_time_greater5vs1to2 <- with(data,
+                                  table(time_greater5vs1to2, HPVVAC))
+
+
+strat_time_greater5vs1to2
+
+epi.2by2(strat_time_greater5vs1to2)
+
+
+#Adjusted for age- 1-2 years and HPVVAC status 
+
+(age_strat_time2 <- table(data$time_greater5vs1to2, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_time2)
+
+
+
+#<1year vs >5years ago 
+
+data$time_greater5vsless1<-factor(data$TIMESINCELAST,
+                                 levels = levels(data$TIMESINCELAST)[c(1,4)])
+
+table(data$time_greater5vsless1)  
+
+strat_time_greater5vsless1 <- with(data,
+                                  table(time_greater5vsless1, HPVVAC))
+
+
+strat_time_greater5vsless1
+
+epi.2by2(strat_time_greater5vsless1)
+
+
+
+#Adjusted for age- <1 year and HPVVAC status 
+
+(age_strat_time3 <- table(data$time_greater5vsless1, data$HPVVAC, data$AGE, deparse.level=2))
+
+epi.2by2(age_strat_time3)
+
