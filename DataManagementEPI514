@@ -261,15 +261,44 @@ write.csv(final,'epi514finaldata.csv')
 
 #Code used for table 1 
 
-data <- read.csv("epi514finaldata.csv")
+final <- read.csv("epi514finaldata.csv")
 
-table(data$HPVVAC)
+final$HPVVAC[final$HPVVAC == "Yes"]<-1 
+final$HPVVAC[final$HPVVAC == "No"]<-2
 
-table(data$AGE, data$HPVVAC)
+final$HPVVAC <-factor(final$HPVVAC, levels=1:2, labels=c("Yes","No"))
 
-table(data$income, data$HPVVAC)
+#Use regular tables to get raw numbers 
+table(final$AGE, final$HPVVAC)
 
-table(data$INSURANCE, data$HPVVAC)
+table(final$income, final$HPVVAC)
+
+table(final$INSURANCE, final$HPVVAC)
+
+table(final$RACE, final$HPVVAC)
+
+#Create survey tables to get weighted percentages 
+
+final <- subset(final, !is.na( X_LLCPWT))
+
+options(survey.lonely.psu = "adjust")
+design <- svydesign(data = final, id=~1, strata= ~X_STSTR, weight= ~X_LLCPWT, nest= TRUE)
+
+race_table <-svytable(~HPVVAC + RACE, design)
+
+prop.table(race_table, margin = 2)
+
+insurance_table <-svytable(~HPVVAC + INSURANCE, design)
+
+prop.table(insurance_table, margin = 2)
+
+age_table <-svytable(~HPVVAC + AGE, design)
+
+prop.table(age_table, margin = 2)
+
+income_table <-svytable(~HPVVAC + income, design)
+
+prop.table(income_table, margin = 2)
 
 
 #code used for table 2 
